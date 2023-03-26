@@ -1,6 +1,7 @@
 version: '3.9'
 
-# Grafana container
+services:
+  # Grafana container
   grafana:
     image: grafana/grafana:9.4.7-ubuntu
     container_name: grafana
