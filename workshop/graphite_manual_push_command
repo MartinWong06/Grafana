@@ -1,0 +1,4 @@
+echo "test.bash.stats 112 `date +%s`" | nc -q0 localhost 2003
+
+
+for i in 88 52 0 36 98 222 15 228 520 30; do echo "test.count $i `date +%s`" | nc -q0 localhost 2003; sleep 15; done
