@@ -16,6 +16,7 @@ scrape_configs:
     labels:
       job: varlogs
       __path__: /var/log/*log
+# Docker job, scrap docker container log to Loki
 - job_name: docker
   static_configs:
   - targets:

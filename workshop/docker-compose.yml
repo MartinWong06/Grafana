@@ -1,51 +1,69 @@
 version: '3.9'
 
 services:
+  # Prometheus container
   prometheus:
     image: prom/prometheus:v2.42.0
     container_name: prometheus
+    #Expose localhost port and match with container port
     ports:
       - 9090:9090
+    # ./prometheus refer instance physical path mount to container path
+    # prometheus-data is a docker volume
     volumes:
       - ./prometheus:/etc/prometheus
       - prometheus-data:/prometheus
+    # Specific prometheus configuration path
     command: 
     - --config.file=/etc/prometheus/prometheus.yml
+    # Bridge network name
     networks:
       - prometheus
     depends_on:
       - cadvisor
+ # Node Exporter container
   node-exporter:
     image: prom/node-exporter
     container_name: node-exporter
+     #Expose localhost port and match with container port
     ports:
       - 9100:9100
+    # Bridge network name
     networks:
       - prometheus
+  # Sample application container
   hashbrowns:
     image: alexellis2/hash-browns
     container_name: hashbrowns
+     #Expose localhost port and match with container port
     ports:
       - "8082:8080"
+    # Bridge network name      
     networks:
       - prometheus
+  # Grafana container
   grafana:
     image: grafana/grafana:9.4.7-ubuntu
     container_name: grafana
+    #Expose localhost port and match with container port
     ports:
       - 3001:3000
     volumes:
       - "./data:/var/lib/grafana"
+    # Bridge network name
     networks:
       - prometheus
+  # Graphite container
   graphite:
     image: graphiteapp/graphite-statsd
     container_name: graphite
+     #Expose localhost port and match with container port
     ports:
     - "8081:80"
     - "2003-2004:2003-2004"
     - "2023-2024:2023-2024"
     - "8125:8125/udp"
+    # Graphite will mount physical path to related container path
     volumes:
     - ./graphite/conf:/opt/graphite/conf
     - ./graphite/storage:/opt/graphite/storage
@@ -55,44 +73,61 @@ services:
     - GRAPHITE_SECRET_KEY="MY_SECRET_KEY"
     - STATSD_ENABLED=true
     - STATSD_PORTS=8125
+    # Bridge network name
     networks:
       - prometheus
+  # Loki container
   loki:
     image: grafana/loki:2.7.4
     container_name: loki
+    #Expose localhost port and match with container port
     ports:
       - 3100:3100
     command: -config.file=/etc/loki/loki-config.yml
+    # ./loki/data:/usr/local/var/lib/loki - Store loki data
+    # conf - loki configuration file that mount to container
     volumes:
       - "./loki/data:/usr/local/var/lib/loki"
       - "./loki/conf/:/etc/loki"
+    # Bridge network name
     networks:
       - prometheus
+  # Promtail container
   promtail:
     image: grafana/promtail:2.7.4
     container_name: promtail
+    #Expose localhost port and match with container port
     ports:
       - 9080:9080
     command: -config.file=/etc/promtail/promtail-config.yml
+    # /var/lib/docker/containers - docker container path
+    # promtail - promtail configuration file that mount to container
     volumes:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - ./promtail:/etc/promtail
+    # Bridge network name
     networks:
       - prometheus
+  # Cadvisor container
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: monitor
+    #Expose localhost port and match with container port
     ports:
     - 8080:8080
+    # /var/lib/docker/ - docker related path
     volumes:
     - /:/rootfs:ro
     - /var/run:/var/run:rw
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
+    # Bridge network name
     networks:
       - prometheus
 volumes:
+  # Create docker volume to store Prometheus data
   prometheus-data:
+# Create docker network, name prometheus with bridge type
 networks:
   prometheus:
     driver: bridge
