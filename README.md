@@ -1,7 +1,5 @@
 # Grafana workshop
 
-# Title
-
 # Grafana
 http://localhost:3001
 
