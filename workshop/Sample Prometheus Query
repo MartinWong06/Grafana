@@ -1,0 +1,13 @@
+How many requests we get for hashes
+
+The following PromQL statement gives the rate of increase for our hash function over a 1 minute window. This window can be smaller, but it needs to cover at least the two samples
+
+rate(hash_seconds_count[1m])
+
+How long each hash takes to compute on average
+
+For the average execution over the last 5 minutes type in
+rate(hash_seconds_sum[5m]) / rate(hash_seconds_count[5m])
+
+Show how many 400 (bad request) errors we got over the last 5 minutes
+rate(hash_seconds_count{code="400"}[5m])
