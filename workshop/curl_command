@@ -1,0 +1,1 @@
+while true; do curl localhost:8082/hash -d "my_input_value_here" && sleep $((RANDOM % 10 + 1)) ; done
