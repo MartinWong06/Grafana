@@ -1,0 +1,98 @@
+version: '3.9'
+
+services:
+  prometheus:
+    image: prom/prometheus:v2.42.0
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    command: 
+    - --config.file=/etc/prometheus/prometheus.yml
+    networks:
+      - prometheus
+    depends_on:
+      - cadvisor
+  node-exporter:
+    image: prom/node-exporter
+    container_name: node-exporter
+    ports:
+      - 9100:9100
+    networks:
+      - prometheus
+  hashbrowns:
+    image: alexellis2/hash-browns
+    container_name: hashbrowns
+    ports:
+      - "8082:8080"
+    networks:
+      - prometheus
+  grafana:
+    image: grafana/grafana:9.4.7-ubuntu
+    container_name: grafana
+    ports:
+      - 3001:3000
+    volumes:
+      - "./data:/var/lib/grafana"
+    networks:
+      - prometheus
+  graphite:
+    image: graphiteapp/graphite-statsd
+    container_name: graphite
+    ports:
+    - "8081:80"
+    - "2003-2004:2003-2004"
+    - "2023-2024:2023-2024"
+    - "8125:8125/udp"
+    volumes:
+    - ./graphite/conf:/opt/graphite/conf
+    - ./graphite/storage:/opt/graphite/storage
+    - ./graphite/data:/opt/graphite/data
+    - ./graphite/logs:/var/log/graphite
+    environment:
+    - GRAPHITE_SECRET_KEY="MY_SECRET_KEY"
+    - STATSD_ENABLED=true
+    - STATSD_PORTS=8125
+    networks:
+      - prometheus
+  loki:
+    image: grafana/loki:2.7.4
+    container_name: loki
+    ports:
+      - 3100:3100
+    command: -config.file=/etc/loki/loki-config.yml
+    volumes:
+      - "./loki/data:/usr/local/var/lib/loki"
+      - "./loki/conf/:/etc/loki"
+    networks:
+      - prometheus
+  promtail:
+    image: grafana/promtail:2.7.4
+    container_name: promtail
+    ports:
+      - 9080:9080
+    command: -config.file=/etc/promtail/promtail-config.yml
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - ./promtail:/etc/promtail
+    networks:
+      - prometheus
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: monitor
+    ports:
+    - 8080:8080
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - prometheus
+volumes:
+  prometheus-data:
+networks:
+  prometheus:
+    driver: bridge
