@@ -124,9 +124,23 @@ services:
     # Bridge network name
     networks:
       - prometheus
+  db:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: grafana
+      MYSQL_USER: grafana
+      MYSQL_PASSWORD: P@ssw0rd123
+      MYSQL_ROOT_PASSWORD: P@ssw0rd@0329
+    ports:
+      - "3306:3306"
+    volumes:
+     - my-db:/var/lib/mysql
 volumes:
   # Create docker volume to store Prometheus data
   prometheus-data:
+  my-db:
 # Create docker network, name prometheus with bridge type
 networks:
   prometheus:
