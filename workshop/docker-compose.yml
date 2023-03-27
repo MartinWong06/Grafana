@@ -131,8 +131,8 @@ services:
     environment:
       MYSQL_DATABASE: grafana
       MYSQL_USER: grafana
-      MYSQL_PASSWORD: P@ssw0rd123
-      MYSQL_ROOT_PASSWORD: P@ssw0rd@0329
+      MYSQL_PASSWORD: grafana
+      MYSQL_ROOT_PASSWORD: P@ssw0rd123
     ports:
       - "3306:3306"
     volumes:
