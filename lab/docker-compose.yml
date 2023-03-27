@@ -2,9 +2,9 @@ version: '3.9'
 
 services:
   # Prometheus container
-  prometheus:
+  prometheus_lab:
     image: prom/prometheus:v2.42.0
-    container_name: prometheus
+    container_name: prometheus_lab
     #Expose localhost port and match with container port
     ports:
       - 9090:9090
@@ -22,9 +22,9 @@ services:
     depends_on:
       - cadvisor
  # Node Exporter container
-  node-exporter:
+  node-exporter_lab:
     image: prom/node-exporter
-    container_name: node-exporter
+    container_name: node-exporter_lab
      #Expose localhost port and match with container port
     ports:
       - 9100:9100
@@ -32,9 +32,9 @@ services:
     networks:
       - prometheus
   # Sample application container
-  hashbrowns:
+  hashbrowns_lab:
     image: alexellis2/hash-browns
-    container_name: hashbrowns
+    container_name: hashbrowns_lab
      #Expose localhost port and match with container port
     ports:
       - "8082:8080"
@@ -42,9 +42,9 @@ services:
     networks:
       - prometheus
   # Grafana container
-  grafana:
+  grafana_lab:
     image: grafana/grafana:9.4.7-ubuntu
-    container_name: grafana
+    container_name: grafana_lab
     #Expose localhost port and match with container port
     ports:
       - 3001:3000
@@ -54,9 +54,9 @@ services:
     networks:
       - prometheus
   # Graphite container
-  graphite:
+  graphite_lab:
     image: graphiteapp/graphite-statsd
-    container_name: graphite
+    container_name: graphite_lab
      #Expose localhost port and match with container port
     ports:
     - "8081:80"
@@ -77,9 +77,9 @@ services:
     networks:
       - prometheus
   # Loki container
-  loki:
+  loki_lab:
     image: grafana/loki:2.7.4
-    container_name: loki
+    container_name: loki_lab
     #Expose localhost port and match with container port
     ports:
       - 3100:3100
@@ -93,9 +93,9 @@ services:
     networks:
       - prometheus
   # Promtail container
-  promtail:
+  promtail_lab:
     image: grafana/promtail:2.7.4
-    container_name: promtail
+    container_name: promtail_lab
     #Expose localhost port and match with container port
     ports:
       - 9080:9080
@@ -109,9 +109,9 @@ services:
     networks:
       - prometheus
   # Cadvisor container
-  cadvisor:
+  cadvisor_lab:
     image: gcr.io/cadvisor/cadvisor:latest
-    container_name: cadvisor
+    container_name: cadvisor_lab
     #Expose localhost port and match with container port
     ports:
     - 8080:8080
@@ -124,9 +124,9 @@ services:
     # Bridge network name
     networks:
       - prometheus
-  db:
+  db_lab:
     image: mysql:8
-    container_name: mysql
+    container_name: mysql_lab
     restart: always
     environment:
       MYSQL_DATABASE: grafana
@@ -139,9 +139,9 @@ services:
      - my-db:/var/lib/mysql
 volumes:
   # Create docker volume to store Prometheus data
-  prometheus-data:
-  my-db:
+  prometheus-data-lab:
+  my-db-lab:
 # Create docker network, name prometheus with bridge type
 networks:
-  prometheus:
+  prometheus-lab:
     driver: bridge
