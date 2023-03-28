@@ -1,7 +1,7 @@
 # Grafana workshop
 
 ## Grafana - Chapter 2
-http://localhost:3001
+http://localhost:3000
 
 ## Grafana - workshop and lab
 http://localhost:3001
