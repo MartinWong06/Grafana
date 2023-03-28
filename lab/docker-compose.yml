@@ -20,7 +20,7 @@ services:
     networks:
       - prometheus-lab
     depends_on:
-      - cadvisor-lab
+      - cadvisor_lab
  # Node Exporter container
   node-exporter_lab:
     image: prom/node-exporter
