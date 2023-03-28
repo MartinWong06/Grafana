@@ -1,0 +1,14 @@
+[Unit]
+Description=Docker Compose
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/nobleprog/grafana/workshop/docker-compose.yml
+ExecStart=/home/nobleprog/grafana/workshop//usr/local/bin/docker-compose up -d
+ExecStop=/home/nobleprog/grafana/workshop//usr/local/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
