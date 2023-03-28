@@ -9,10 +9,10 @@ services:
     ports:
       - 9090:9090
     # ./prometheus refer instance physical path mount to container path
-    # prometheus-data is a docker volume
+    # prometheus-data-lab is a docker volume
     volumes:
       - ./prometheus:/etc/prometheus
-      - prometheus-data:/prometheus
+      - prometheus-data-lab:/prometheus
     # Specific prometheus configuration path
     command: 
     - --config.file=/etc/prometheus/prometheus.yml
