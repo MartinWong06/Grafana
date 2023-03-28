@@ -136,7 +136,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-     - my-db:/var/lib/mysql
+     - my-db-lab:/var/lib/mysql
 volumes:
   # Create docker volume to store Prometheus data
   prometheus-data-lab:
