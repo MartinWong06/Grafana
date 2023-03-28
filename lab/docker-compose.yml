@@ -18,7 +18,7 @@ services:
     - --config.file=/etc/prometheus/prometheus.yml
     # Bridge network name
     networks:
-      - prometheus
+      - prometheus-lab
     depends_on:
       - cadvisor
  # Node Exporter container
@@ -30,7 +30,7 @@ services:
       - 9100:9100
     # Bridge network name
     networks:
-      - prometheus
+      - prometheus-lab
   # Sample application container
   hashbrowns_lab:
     image: alexellis2/hash-browns
@@ -40,7 +40,7 @@ services:
       - "8082:8080"
     # Bridge network name      
     networks:
-      - prometheus
+      - prometheus-lab
   # Grafana container
   grafana_lab:
     image: grafana/grafana:9.4.7-ubuntu
@@ -52,7 +52,7 @@ services:
       - "./data:/var/lib/grafana"
     # Bridge network name
     networks:
-      - prometheus
+      - prometheus-lab
   # Graphite container
   graphite_lab:
     image: graphiteapp/graphite-statsd
@@ -75,7 +75,7 @@ services:
     - STATSD_PORTS=8125
     # Bridge network name
     networks:
-      - prometheus
+      - prometheus-lab
   # Loki container
   loki_lab:
     image: grafana/loki:2.7.4
@@ -91,7 +91,7 @@ services:
       - "./loki/conf/:/etc/loki"
     # Bridge network name
     networks:
-      - prometheus
+      - prometheus-lab
   # Promtail container
   promtail_lab:
     image: grafana/promtail:2.7.4
@@ -107,7 +107,7 @@ services:
       - ./promtail:/etc/promtail
     # Bridge network name
     networks:
-      - prometheus
+      - prometheus-lab
   # Cadvisor container
   cadvisor_lab:
     image: gcr.io/cadvisor/cadvisor:latest
@@ -123,7 +123,7 @@ services:
     - /var/lib/docker/:/var/lib/docker:ro
     # Bridge network name
     networks:
-      - prometheus
+      - prometheus-lab
   db_lab:
     image: mysql:8
     container_name: mysql_lab
