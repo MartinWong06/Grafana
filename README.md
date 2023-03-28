@@ -1,6 +1,9 @@
 # Grafana workshop
 
-# Grafana
+# Grafana - Chapter 2
+http://localhost:3001
+
+# Grafana - workshop and lab
 http://localhost:3001
 
 # Prometheus
