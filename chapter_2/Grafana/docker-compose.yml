@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   # Grafana container
-  grafana:
+  grafana-chapter2:
     image: grafana/grafana:9.4.7-ubuntu
     container_name: grafana
     #Expose localhost port and match with container port
