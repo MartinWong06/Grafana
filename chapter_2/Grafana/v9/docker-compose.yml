@@ -9,4 +9,4 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - "./data:/var/lib/grafana"
+      - "./v9/grafana/data:/var/lib/grafana"
