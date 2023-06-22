@@ -1,12 +1,14 @@
 echo "Creating v10 data folder"
-mkdir grafana/chapter_2/Grafana/reverseProxy/v10/data
+mkdir -vp v10/data
 
 echo "Creating v9 data folder"
-mkdir grafana/chapter_2/Grafana/reverseProxy/v9/data
+mkdir -vp v9/data
 
 echo "Grant folder permission"
-chmod 777 grafana/chapter_2/Grafana/reverseProxy/v10/data
-chmod 777 grafana/chapter_2/Grafana/reverseProxy/v9/data
+chmod 777 v10
+chmod 777 v10/data
+chmod 777 v9
+chmod 777 v9/data
 
 echo "Copy nginx reverse proxy configuration file to /etc/nginx/sites-enabled/ path"
 cp nginx.conf /etc/nginx/sites-enabled/nginx.conf
