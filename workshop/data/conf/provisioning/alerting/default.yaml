@@ -73,5 +73,5 @@ contactPoints:
       - uid: d4e19a04-8066-4378-8d87-ddde7da60a47
         type: slack
         settings:
-          url: "https://hooks.slack.com/services/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"
+          url: "<YOUR URL>"
         #disableResolveMessage: false
