@@ -43,9 +43,9 @@ services:
       - prometheus
   # Grafana container
   grafana:
-    image: grafana/grafana:10.0.0-ubuntu
+    image: grafana/grafana:10.0.1-ubuntu
     container_name: grafana
-     environment:
+    environment:
      - GF_PATHS_PROVISIONING=conf/provisioning
     #Expose localhost port and match with container port
     ports:

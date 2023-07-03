@@ -3,7 +3,7 @@ version: '3.9'
 services:
   # Grafana container
   grafana-v10:
-    image: grafana/grafana:10.0.0-ubuntu
+    image: grafana/grafana:10.0.1-ubuntu
     container_name: grafana-v10
     environment:
       #- GF_SERVER_DOMAIN=<your domain>
