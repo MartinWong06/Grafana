@@ -3,7 +3,7 @@ version: '3.9'
 services:
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.42.0
+    image: prom/prometheus:v2.44.0
     container_name: prometheus
     #Expose localhost port and match with container port
     ports:
@@ -43,13 +43,16 @@ services:
       - prometheus
   # Grafana container
   grafana:
-    image: grafana/grafana:9.4.7-ubuntu
+    image: grafana/grafana:10.0.0-ubuntu
     container_name: grafana
+     environment:
+     - GF_PATHS_PROVISIONING=conf/provisioning
     #Expose localhost port and match with container port
     ports:
       - 3001:3000
     volumes:
       - "./data:/var/lib/grafana"
+      - "./data/conf/provisioning:/usr/share/grafana/conf/provisioning"
     # Bridge network name
     networks:
       - prometheus
@@ -78,7 +81,7 @@ services:
       - prometheus
   # Loki container
   loki:
-    image: grafana/loki:2.7.4
+    image: grafana/loki:2.8.2
     container_name: loki
     #Expose localhost port and match with container port
     ports:
@@ -94,7 +97,7 @@ services:
       - prometheus
   # Promtail container
   promtail:
-    image: grafana/promtail:2.7.4
+    image: grafana/promtail:2.8.2
     container_name: promtail
     #Expose localhost port and match with container port
     ports:
@@ -104,6 +107,7 @@ services:
     # promtail - promtail configuration file that mount to container
     volumes:
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - ./log:/var/lib/mylog
       - ./promtail:/etc/promtail
     # Bridge network name
     networks:

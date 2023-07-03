@@ -7,6 +7,6 @@ services:
     container_name: grafana-chapter2
     #Expose localhost port and match with container port
     ports:
-      - 3000:3000
+      - 3009:3000
     volumes:
       - "./data:/var/lib/grafana"

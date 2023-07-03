@@ -24,3 +24,17 @@ scrape_configs:
     labels:
       job: docker-log
       __path__: /var/lib/docker/containers/*/*log
+- job_name: myLog_001
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: mylog_001
+      __path__: /var/lib/mylog/myLog.log
+- job_name: MyLog_002
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: mylog_002
+      __path__: /var/lib/mylog/myLog2.log

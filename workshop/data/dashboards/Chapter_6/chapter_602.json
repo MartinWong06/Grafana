@@ -1,0 +1,162 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 24,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "bc31d074-5192-46da-a870-d85152747ce0"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "code": {
+            "language": "plaintext",
+            "showLineNumbers": false,
+            "showMiniMap": false
+          },
+          "content": "# Title\n\nFor markdown syntax help: [commonmark.org/help](https://commonmark.org/help/)\n\nUsing constant variable \n\"${constant}\"\n\nUsing Text variable \n\"${textBox}\"\n\nUsing Custom variable \n\"${csv}\"",
+          "mode": "markdown"
+        },
+        "pluginVersion": "10.0.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "bc31d074-5192-46da-a870-d85152747ce0"
+            },
+            "expr": "",
+            "instant": false,
+            "range": true,
+            "refId": "A"
+          }
+        ],
+        "title": "Panel Title",
+        "type": "text"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "6",
+            "value": "6"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "label": "CSV Value",
+          "multi": false,
+          "name": "csv",
+          "options": [
+            {
+              "selected": false,
+              "text": "34",
+              "value": "34"
+            },
+            {
+              "selected": true,
+              "text": "6",
+              "value": "6"
+            },
+            {
+              "selected": false,
+              "text": "7",
+              "value": "7"
+            },
+            {
+              "selected": false,
+              "text": "888",
+              "value": "888"
+            },
+            {
+              "selected": false,
+              "text": "4343",
+              "value": "4343"
+            },
+            {
+              "selected": false,
+              "text": "76",
+              "value": "76"
+            },
+            {
+              "selected": false,
+              "text": "34",
+              "value": "34"
+            }
+          ],
+          "query": "34,6,7,888,4343,76,34",
+          "queryValue": "",
+          "skipUrlSync": false,
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": false,
+            "text": "cadvisor",
+            "value": "cadvisor"
+          },
+          "hide": 0,
+          "label": "Text Value",
+          "name": "textBox",
+          "options": [
+            {
+              "selected": true,
+              "text": "cadvisor",
+              "value": "cadvisor"
+            }
+          ],
+          "query": "cadvisor",
+          "skipUrlSync": false,
+          "type": "textbox"
+        },
+        {
+          "hide": 2,
+          "label": "Constant Variable",
+          "name": "constant",
+          "query": "90",
+          "skipUrlSync": false,
+          "type": "constant"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "6.02 Custom, Text and Constant Variable",
+    "uid": "c081f068-1ea3-4b3f-875f-76b7be2c0ebb",
+    "version": 2,
+    "weekStart": ""
+  }

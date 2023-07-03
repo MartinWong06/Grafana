@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Executing the Docker Command Without Sudo
 
 #Add your username to the docker group:

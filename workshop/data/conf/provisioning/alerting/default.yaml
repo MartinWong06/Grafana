@@ -1,0 +1,77 @@
+apiVersion: 1
+
+groups:
+    - orgId: 1
+      name: up
+      folder: Chapter 5
+      interval: 1m
+      rules:
+        - uid: b71c42d3-b65f-4e25-bf8c-5ae01bf941c1
+          title: Node Prometheus
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: bc31d074-5192-46da-a870-d85152747ce0
+              model:
+                editorMode: code
+                expr: 'up{job="prometheus-node"} '
+                hide: false
+                instant: true
+                intervalMs: 1000
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 1
+                            - 0
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: threshold
+                dashboardUid: b979ec88-18c3-408a-9718-053aaccfe12a
+          panelId: 1
+          noDataState: Alerting
+          execErrState: Error
+          for: 5m
+          annotations:
+            __dashboardUid__: b979ec88-18c3-408a-9718-053aaccfe12a
+            __panelId__: "1"
+            Status: Prometheus Down
+          labels:
+            app: prometheus
+          isPaused: false
+
+contactPoints:
+    - orgId: 1
+      name: Slack configuration
+      receivers:
+      - uid: d4e19a04-8066-4378-8d87-ddde7da60a47
+        type: slack
+        settings:
+          url: "https://hooks.slack.com/services/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"
+        #disableResolveMessage: false

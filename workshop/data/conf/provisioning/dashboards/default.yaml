@@ -1,0 +1,70 @@
+# config file version
+apiVersion: 1
+
+providers:
+ - name: 'Import'
+   orgId: 1
+   folder: 'Import'
+   type: file
+   options:
+     path: /var/lib/grafana/dashboards/General
+ - name: 'Chapter_2'
+   orgId: 1
+   folder: 'Chapter 2'
+   type: file
+   folderId: 3
+   folderUid: "e7d81ac4-3a54-43db-91af-0f52e737a325"
+   folderTitle: "Chapter 2"
+   folderUrl: "/grafana/dashboards/f/e7d81ac4-3a54-43db-91af-0f52e737a325/chapter-2"
+   options:
+     path: /var/lib/grafana/dashboards/Chapter_2
+ - name: 'Chapter_3'
+   orgId: 1
+   folder: 'Chapter 3'
+   type: file
+   folderId: 16
+   folderUid: "c8aef685-213d-45e1-9b7b-4264555705dc"
+   folderTitle: "Chapter 3"
+   folderUrl: "/grafana/dashboards/f/c8aef685-213d-45e1-9b7b-4264555705dc/chapter-3"
+   options:
+     path: /var/lib/grafana/dashboards/Chapter_3
+ - name: 'Chapter_4'
+   orgId: 1
+   folder: 'Chapter 4'
+   type: file
+   folderId: 2
+   folderUid: e5b634f4-c89d-4110-8598-7e9546bd694c
+   folderTitle: "Chapter 4"
+   folderUrl: "/grafana/dashboards/f/e5b634f4-c89d-4110-8598-7e9546bd694c/chapter-4"
+   options:
+     path: /var/lib/grafana/dashboards/Chapter_4
+ - name: 'Chapter_5'
+   orgId: 1
+   folder: 'Chapter 5'
+   type: file
+   folderId: 18
+   folderUid: c6382ff2-0262-409f-9f70-91c7cd81c7e6
+   folderTitle: "Chapter 5"
+   folderUrl: "/grafana/dashboards/f/c6382ff2-0262-409f-9f70-91c7cd81c7e6/chapter-5"
+   options:
+     path: /var/lib/grafana/dashboards/Chapter_5
+ - name: 'Chapter_6'
+   orgId: 1
+   folder: 'Chapter 6'
+   type: file
+   folderId: 21
+   folderUid: "c2fbc516-e277-47ef-bce0-bba05f6d7416"
+   folderTitle: "Chapter 6"
+   folderUrl: "/grafana/dashboards/f/c2fbc516-e277-47ef-bce0-bba05f6d7416/chapter-6"
+   options:
+     path: /var/lib/grafana/dashboards/Chapter_6
+ - name: 'Chapter_7'
+   orgId: 1
+   folder: 'Chapter 7'
+   type: file
+   folderId: 28
+   folderUid: "a9eed0eb-83fc-41fa-9cb6-b5a2f089f27b"
+   folderTitle: "Chapter 5"
+   folderUrl: "/grafana/dashboards/f/a9eed0eb-83fc-41fa-9cb6-b5a2f089f27b/chapter-7"
+   options:
+     path: /var/lib/grafana/dashboards/Chapter_7

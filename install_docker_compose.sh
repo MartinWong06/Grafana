@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #Create the directory
 mkdir -p ~/.docker/cli-plugins/
 

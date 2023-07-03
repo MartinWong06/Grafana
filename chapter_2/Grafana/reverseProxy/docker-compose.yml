@@ -9,11 +9,13 @@ services:
       #- GF_SERVER_DOMAIN=<your domain>
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
       - GF_SERVER_ROOT_URL=%(protocol)s://%(domain)s:%(http_port)s/v10/
+      #- GF_PATHS_PROVISIONING=conf/provisioning
     #Expose localhost port and match with container port
     ports:
       - 3010:3000
     volumes:
       - "./v10/data:/var/lib/grafana"
+      #- "./v10/conf/provisioning:/usr/share/grafana/conf/provisioning"
   grafana-v9:
     image: grafana/grafana:9.4.7-ubuntu
     container_name: grafana-v9

@@ -1,0 +1,267 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bff14e10-17c7-4dc3-8f28-ac940544e298"
+          },
+          "enable": false,
+          "expr": "{job=~\"mylog_001\"}|= \"Opera\"",
+          "iconColor": "red",
+          "instant": false,
+          "maxLines": 10,
+          "name": "Loki Opera annotation"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bff14e10-17c7-4dc3-8f28-ac940544e298"
+          },
+          "enable": false,
+          "expr": "{job=\"mylog_002\"} |~ \"Mac\"",
+          "iconColor": "yellow",
+          "instant": false,
+          "name": "Loki Mac Annotation",
+          "textFormat": "Log 2"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 26,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "bff14e10-17c7-4dc3-8f28-ac940544e298"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "bff14e10-17c7-4dc3-8f28-ac940544e298"
+            },
+            "editorMode": "code",
+            "expr": "rate({job=\"mylog_001\"} |= \"$keyword\"[$__interval])",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Loki TS Panel",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "bff14e10-17c7-4dc3-8f28-ac940544e298"
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        },
+        "id": 3,
+        "options": {
+          "dedupStrategy": "none",
+          "enableLogDetails": true,
+          "prettifyLogMessage": false,
+          "showCommonLabels": false,
+          "showLabels": false,
+          "showTime": false,
+          "sortOrder": "Descending",
+          "wrapLogMessage": false
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "bff14e10-17c7-4dc3-8f28-ac940544e298"
+            },
+            "editorMode": "code",
+            "expr": "{filename=\"/var/lib/mylog/myLog.log\",job=\"mylog_001\"} |~ \"$keyword\"",
+            "key": "Q-0b169e43-ef4f-4389-ba99-dc07bd6496aa-0",
+            "queryType": "range",
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "bff14e10-17c7-4dc3-8f28-ac940544e298"
+            },
+            "editorMode": "code",
+            "expr": "{filename=\"/var/lib/mylog/myLog.log\",job=\"mylog_001\"} |~ \"Opera\"",
+            "hide": true,
+            "key": "Q-0b169e43-ef4f-4389-ba99-dc07bd6496aa-0",
+            "queryType": "range",
+            "refId": "B"
+          }
+        ],
+        "title": "Opera Log Panel with Variabel - MyLog_001",
+        "type": "logs"
+      },
+      {
+        "datasource": {
+          "type": "loki",
+          "uid": "bff14e10-17c7-4dc3-8f28-ac940544e298"
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 15
+        },
+        "id": 1,
+        "options": {
+          "dedupStrategy": "none",
+          "enableLogDetails": true,
+          "prettifyLogMessage": false,
+          "showCommonLabels": false,
+          "showLabels": false,
+          "showTime": false,
+          "sortOrder": "Descending",
+          "wrapLogMessage": false
+        },
+        "pluginVersion": "10.0.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "bff14e10-17c7-4dc3-8f28-ac940544e298"
+            },
+            "editorMode": "code",
+            "expr": "{job=\"mylog_002\"}",
+            "queryType": "range",
+            "refId": "A"
+          }
+        ],
+        "title": "Logs Panel",
+        "type": "logs"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": false,
+            "text": "",
+            "value": ""
+          },
+          "hide": 0,
+          "label": "Loki Query Filter",
+          "name": "keyword",
+          "options": [
+            {
+              "selected": true,
+              "text": "",
+              "value": ""
+            }
+          ],
+          "query": "",
+          "skipUrlSync": false,
+          "type": "textbox"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-15m",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "7.03 Loki Log 2",
+    "uid": "bafa6143-9c62-4133-8fca-e03a61b7c794",
+    "version": 10,
+    "weekStart": ""
+  }
