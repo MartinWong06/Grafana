@@ -18,7 +18,6 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 7,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -82,7 +81,7 @@
             "reverse": false
           }
         },
-        "pluginVersion": "10.0.0",
+        "pluginVersion": "10.0.1",
         "targets": [
           {
             "datasource": {
@@ -160,7 +159,7 @@
             "reverse": false
           }
         },
-        "pluginVersion": "10.0.0",
+        "pluginVersion": "10.0.1",
         "targets": [
           {
             "datasource": {
@@ -168,7 +167,7 @@
               "uid": "bc31d074-5192-46da-a870-d85152747ce0"
             },
             "editorMode": "code",
-            "expr": "prometheus_rule_evaluation_duration_seconds{quantile=\"0.9\",job=\"prometheus-docker\"}\r\n",
+            "expr": "prometheus_rule_evaluation_duration_seconds{quantile=\"0.9\",job=\"prometheus\"}\r\n",
             "instant": false,
             "range": true,
             "refId": "A"
@@ -206,6 +205,6 @@
     "timezone": "",
     "title": "4.05 Heatmap",
     "uid": "d8881ab7-56a2-4d08-8fcf-3b62fd0c2e63",
-    "version": 2,
+    "version": 1,
     "weekStart": ""
   }

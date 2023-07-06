@@ -111,7 +111,7 @@
           },
           "showHeader": true
         },
-        "pluginVersion": "10.0.0",
+        "pluginVersion": "10.0.1",
         "targets": [
           {
             "dataset": "grafana",
@@ -154,7 +154,7 @@
       {
         "datasource": {
           "type": "marcusolsson-csv-datasource",
-          "uid": "afc2bef8-cd09-4ac5-94ef-48bf11c8a26c"
+          "uid": "c7db015e-da6b-43c1-a423-5c9fcf12d372"
         },
         "fieldConfig": {
           "defaults": {
@@ -204,12 +204,12 @@
           },
           "showHeader": true
         },
-        "pluginVersion": "10.0.0",
+        "pluginVersion": "10.0.1",
         "targets": [
           {
             "datasource": {
               "type": "marcusolsson-csv-datasource",
-              "uid": "afc2bef8-cd09-4ac5-94ef-48bf11c8a26c"
+              "uid": "c7db015e-da6b-43c1-a423-5c9fcf12d372"
             },
             "decimalSeparator": ".",
             "delimiter": ",",
@@ -251,8 +251,7 @@
               "mode": "absolute",
               "steps": [
                 {
-                  "color": "green",
-                  "value": null
+                  "color": "green"
                 },
                 {
                   "color": "purple",

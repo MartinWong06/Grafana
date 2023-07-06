@@ -17,7 +17,7 @@ groups:
               datasourceUid: bc31d074-5192-46da-a870-d85152747ce0
               model:
                 editorMode: code
-                expr: 'up{job="prometheus-node"} '
+                expr: 'up{job="prometheus"} '
                 hide: false
                 instant: true
                 intervalMs: 1000
