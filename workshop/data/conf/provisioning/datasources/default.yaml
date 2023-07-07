@@ -18,7 +18,7 @@ datasources:
   - name: Graphite
     type: graphite
     uid: a397212d-0f0c-400d-a954-2c87a6364d04
-    url: http://graphite:80
+    url: http://graphite
   - name: Loki
     type: loki
     uid: bff14e10-17c7-4dc3-8f28-ac940544e298
