@@ -3,18 +3,18 @@ version: '3.9'
 services:
   # Grafana container
   grafana-chapter2:
-    image: grafana/grafana:10.0.1-ubuntu
+    image: grafana/grafana:10.2.3-ubuntu
     container_name: grafana-chapter2
     #Expose localhost port and match with container port
     ports:
       - 3010:3000
     volumes:
       - grafana_v10:/var/lib/grafana
-    networks:
-      - prometheus
-networks:
-  prometheus:
-    name: workshop_prometheus
-    external: true
+#   networks:
+#     - prometheus
+#networks:
+#  prometheus:
+#    name: workshop_prometheus
+#    external: true
 volumes:
   grafana_v10:

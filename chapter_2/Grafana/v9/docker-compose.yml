@@ -3,10 +3,12 @@ version: '3.9'
 services:
   # Grafana container
   grafana-chapter2:
-    image: grafana/grafana:9.4.7-ubuntu
+    image: grafana/grafana:9.5.15-ubuntu
     container_name: grafana-chapter2
     #Expose localhost port and match with container port
     ports:
       - 3009:3000
     volumes:
-      - "./data:/var/lib/grafana"
+      - grafana_v9:/var/lib/grafana
+volumes:
+  grafana_v9:
