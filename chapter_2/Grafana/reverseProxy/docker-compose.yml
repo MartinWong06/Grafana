@@ -5,6 +5,7 @@ services:
   grafana-v10:
     image: grafana/grafana:10.2.3-ubuntu
     container_name: grafana-v10
+    restart: always
     environment:
       #- GF_SERVER_DOMAIN=<your domain>
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
@@ -19,6 +20,7 @@ services:
   grafana-v9:
     image: grafana/grafana:9.5.15-ubuntu
     container_name: grafana-v9
+    restart: always
     environment:
       #- GF_SERVER_DOMAIN=<your domain>
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
