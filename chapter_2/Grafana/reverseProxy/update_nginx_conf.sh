@@ -10,7 +10,7 @@ fi
 domain="$1"
 
 # Path to your Nginx configuration file
-nginx_conf="/etc/nginx/sites-available/default"  # Update with the correct path
+nginx_conf="/etc/nginx/sites-available/nginx.conf"  # Update with the correct path
 
 # Perform the replacement using sed
 sed -i "s/server_name <your domain>/server_name $domain;/g" "$nginx_conf"
