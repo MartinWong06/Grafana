@@ -13,7 +13,7 @@ domain="$1"
 nginx_conf="/etc/nginx/sites-available/nginx.conf"  # Update with the correct path
 
 # Perform the replacement using sed
-sed -i "s/server_name <your domain>/server_name $domain;/g" "$nginx_conf"
+sed -i "s/<your_domain>/$domain/g" "$nginx_conf"
 
 echo "Nginx configuration updated with domain: $domain"
 
