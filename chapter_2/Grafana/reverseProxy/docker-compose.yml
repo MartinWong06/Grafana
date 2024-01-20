@@ -14,7 +14,7 @@ services:
     ports:
       - 3010:3000
     volumes:
-      - "./v10/data:/var/lib/grafana"
+      - grafana_v10_rs:/var/lib/grafana
       #- "./v10/conf/provisioning:/usr/share/grafana/conf/provisioning"
   grafana-v9:
     image: grafana/grafana:9.4.7-ubuntu
@@ -27,4 +27,7 @@ services:
     ports:
       - 3009:3000
     volumes:
-      - "./v9/data:/var/lib/grafana"
+      - grafana_v9_rs:/var/lib/grafana
+volumes:
+  grafana_v9_rs:
+  grafana_v10_rs:
