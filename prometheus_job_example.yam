@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'simple_job'
+    static_configs:
+      - targets:
+          - 'host1:9090'
+          - 'host2:9090'
+          - 'host3:9090'
+          - 'host4:9090'
