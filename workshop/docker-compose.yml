@@ -196,7 +196,8 @@ volumes:
   my-db:
   loki:
   tempo:
-
+  influxdb-storage:
+  
 # Create docker network, name prometheus with bridge type
 networks:
   prometheus:
