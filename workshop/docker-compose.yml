@@ -21,6 +21,7 @@ services:
       - prometheus
     depends_on:
       - cadvisor
+
  # Node Exporter container
   node-exporter:
     image: prom/node-exporter
@@ -31,6 +32,7 @@ services:
     # Bridge network name
     networks:
       - prometheus
+
   # Sample application container
   hashbrowns:
     image: alexellis2/hash-browns
@@ -41,6 +43,7 @@ services:
     # Bridge network name      
     networks:
       - prometheus
+
   # Grafana container
   grafana:
     image: grafana/grafana:10.2.3-ubuntu
@@ -56,6 +59,7 @@ services:
     # Bridge network name
     networks:
       - prometheus
+
   # Graphite container
   graphite:
     image: graphiteapp/graphite-statsd
@@ -79,6 +83,7 @@ services:
     # Bridge network name
     networks:
       - prometheus
+
   # Loki container
   loki:
     image: grafana/loki:2.9.3
@@ -90,11 +95,14 @@ services:
     # ./loki/data:/usr/local/var/lib/loki - Store loki data
     # conf - loki configuration file that mount to container
     volumes:
-      - "./loki/data:/usr/local/var/lib/loki"
+      #- "./loki/data:/usr/local/var/lib/loki"
+      - /etc/localtime:/etc/localtime:ro
       - "./loki/conf/:/etc/loki"
+      - loki:/data/loki
     # Bridge network name
     networks:
       - prometheus
+      
   # Promtail container
   promtail:
     image: grafana/promtail:2.9.3
@@ -112,6 +120,25 @@ services:
     # Bridge network name
     networks:
       - prometheus
+
+  tempo:
+    # https://github.com/grafana/tempo/releases
+    image: grafana/tempo:2.0.1
+    container_name: tempo
+    command: [ "-config.file=/etc/tempo.yaml" ]
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${PWD}/tempo/tempo.yml:/etc/tempo.yaml
+      - tempo:/tmp/tempo
+    restart: unless-stopped
+    ports:
+      - 3200:3200  # tempo
+      - 4007:4317  # otlp grpc
+    #depends_on:
+    #  - otel-collector      
+    networks:
+      - prometheus
+
   # Cadvisor container
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
@@ -128,6 +155,7 @@ services:
     # Bridge network name
     networks:
       - prometheus
+
   db:
     image: mysql:8
     container_name: mysql
@@ -141,6 +169,7 @@ services:
       - "3306:3306"
     volumes:
      - my-db:/var/lib/mysql
+
   influxdb:
     image: influxdb:2.1.1
     volumes:
@@ -151,6 +180,7 @@ services:
     restart: on-failure:10
     ports:
       - ${DOCKER_INFLUXDB_INIT_PORT}:8086
+
   telegraf:
     image: telegraf:1.19
     volumes:
@@ -159,10 +189,14 @@ services:
       - .env
     depends_on:
       - influxdb
+
 volumes:
   # Create docker volume to store Prometheus data
   prometheus-data:
   my-db:
+  loki:
+  tempo:
+
 # Create docker network, name prometheus with bridge type
 networks:
   prometheus:
