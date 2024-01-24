@@ -3,7 +3,7 @@ version: '3.9'
 services:
   # Prometheus container
   prometheus:
-    image: prom/prometheus:v2.44.0
+    image: prom/prometheus:v2.47.0
     container_name: prometheus
     #Expose localhost port and match with container port
     ports:
@@ -43,7 +43,7 @@ services:
       - prometheus
   # Grafana container
   grafana:
-    image: grafana/grafana:10.0.1-ubuntu
+    image: grafana/grafana:10.2.3-ubuntu
     container_name: grafana
     environment:
      - GF_PATHS_PROVISIONING=conf/provisioning
@@ -81,7 +81,7 @@ services:
       - prometheus
   # Loki container
   loki:
-    image: grafana/loki:2.8.2
+    image: grafana/loki:2.9.3
     container_name: loki
     #Expose localhost port and match with container port
     ports:
@@ -97,7 +97,7 @@ services:
       - prometheus
   # Promtail container
   promtail:
-    image: grafana/promtail:2.8.2
+    image: grafana/promtail:2.9.3
     container_name: promtail
     #Expose localhost port and match with container port
     ports:
@@ -141,6 +141,24 @@ services:
       - "3306:3306"
     volumes:
      - my-db:/var/lib/mysql
+  influxdb:
+    image: influxdb:2.1.1
+    volumes:
+      - influxdb-storage:/var/lib/influxdb2:rw
+    env_file:
+      - .env
+    entrypoint: ["./entrypoint.sh"]
+    restart: on-failure:10
+    ports:
+      - ${DOCKER_INFLUXDB_INIT_PORT}:8086
+  telegraf:
+    image: telegraf:1.19
+    volumes:
+      - ${TELEGRAF_CFG_PATH}:/etc/telegraf/telegraf.conf:rw
+    env_file:
+      - .env
+    depends_on:
+      - influxdb
 volumes:
   # Create docker volume to store Prometheus data
   prometheus-data:

@@ -3,7 +3,7 @@ version: '3.9'
 services:
   # Prometheus container
   prometheus_lab:
-    image: prom/prometheus:v2.42.0
+    image: prom/prometheus:v2.47.0
     container_name: prometheus_lab
     #Expose localhost port and match with container port
     ports:
