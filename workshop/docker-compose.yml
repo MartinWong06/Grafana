@@ -58,6 +58,7 @@ services:
       #- grafana-data:/var/lib/grafana
       #- "./data/conf/provisioning:/usr/share/grafana/conf/provisioning"
     # Bridge network name
+    user: "1001"
     networks:
       - prometheus
 
