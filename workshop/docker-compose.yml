@@ -54,9 +54,8 @@ services:
     ports:
       - 3001:3000
     volumes:
-      - "./data:/var/lib/grafana:Z"
-      #- grafana-data:/var/lib/grafana
-      #- "./data/conf/provisioning:/usr/share/grafana/conf/provisioning"
+      - "./data:/var/lib/grafana"
+      - "./data/conf/provisioning:/usr/share/grafana/conf/provisioning"
     # Bridge network name
     user: "1001"
     networks:
@@ -199,8 +198,6 @@ volumes:
   loki:
   tempo:
   influxdb-storage:
-  grafana-data:
-    
 
 # Create docker network, name prometheus with bridge type
 networks:
